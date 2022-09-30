@@ -47,18 +47,20 @@ public class ContactsData {
         contactsList = FXCollections.observableArrayList();
         Path filePath = Paths.get(filename);
         String input;
-        try(BufferedReader bf = Files.newBufferedReader(filePath)){
-            while((input = bf.readLine()) != null){
-                String[] contactPart = input.split("\t");
-                String firstname = contactPart[0];
-                String lastname = contactPart[1];
-                String phoneNumber = contactPart[2];
-                String note = contactPart[3];
-                Contact contact = new Contact(firstname, lastname, phoneNumber, note);
-                contactsList.add(contact);
+        if(Files.exists(filePath)){
+            try(BufferedReader bf = Files.newBufferedReader(filePath)){
+                while((input = bf.readLine()) != null){
+                    String[] contactPart = input.split("\t");
+                    String firstname = contactPart[0];
+                    String lastname = contactPart[1];
+                    String phoneNumber = contactPart[2];
+                    String note = contactPart[3];
+                    Contact contact = new Contact(firstname, lastname, phoneNumber, note);
+                    contactsList.add(contact);
+                }
+            }catch (IOException e){
+                e.printStackTrace();
             }
-        }catch (IOException e){
-            e.printStackTrace();
         }
     }
 
