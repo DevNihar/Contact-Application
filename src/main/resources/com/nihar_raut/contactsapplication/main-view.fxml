@@ -6,13 +6,13 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
-<BorderPane xmlns:fx="http://javafx.com/fxml"
+<BorderPane fx:id="mainBorderPane" xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.nihar_raut.contactsapplication.Controller">
     <top>
         <MenuBar>
             <Menu text="Contact">
                 <items>
-                    <MenuItem text="Add Contact"/>
+                    <MenuItem text="Add Contact" onAction="#handleCreateContact"/>
                     <SeparatorMenuItem/>
                     <MenuItem text="Delete Contact"/>
                     <SeparatorMenuItem/>
@@ -24,7 +24,7 @@
     <center>
         <TableView fx:id="contactsTable">
             <columns>
-                <TableColumn fx:id="firstNameColumn" text="First Name"/>
+                <TableColumn fx:id="firstNameColumn" text="First Name" />
                 <TableColumn fx:id="secondNameColumn" text="Last Name"/>
                 <TableColumn fx:id="phoneNumberColumn" text="Phone Number"/>
                 <TableColumn fx:id="noteColumn" text="Note"/>
