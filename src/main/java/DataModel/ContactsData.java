@@ -34,6 +34,9 @@ public class ContactsData {
         }
     }
 
+    public ObservableList<Contact> getContactsList() {
+        return contactsList;
+    }
 
     public void removeContact(Contact contact){
         if(contact != null){

@@ -6,4 +6,5 @@ module com.nihar_raut.contactsapplication {
 
     opens com.nihar_raut.contactsapplication to javafx.fxml;
     exports com.nihar_raut.contactsapplication;
+    opens DataModel;
 }
