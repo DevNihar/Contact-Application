@@ -26,20 +26,9 @@ public class Controller {
     private TableColumn<Contact, String> phoneNumberColumn;
     @FXML
     private TableColumn<Contact, String> noteColumn;
-    private List<Contact> contactList;
 
     public void initialize(){
-//        Contact contact1 = new Contact("Nihar", "Raut", "8390069093", "Me");
-//        Contact contact2 = new Contact("Niharika", "Raut", "5478965135", "Sister");
-//        Contact contact3 = new Contact("Damayanti", "Raut", "7546982145", "Mother");
-//        Contact contact4 = new Contact("Suresh", "Raut", "6854257954", "Father");
-//
-//        ContactsData.getInstance().addContact(contact1);
-//        ContactsData.getInstance().addContact(contact2);
-//        ContactsData.getInstance().addContact(contact3);
-//        ContactsData.getInstance().addContact(contact4);
 
-        contactList = new ArrayList<>(ContactsData.getInstance().getContactsList());
         firstNameColumn.setMinWidth(100);
         firstNameColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Contact, String>, ObservableValue<String>>() {
             @Override
@@ -69,7 +58,7 @@ public class Controller {
             }
         });
 
-        
+
         contactsTable.setItems(ContactsData.getInstance().getContactsList());
 
     }
