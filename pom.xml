@@ -65,7 +65,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.nihar_raut.contactsapplication/com.nihar_raut.contactsapplication.HelloApplication
+                                com.nihar_raut.contactsapplication/com.nihar_raut.contactsapplication.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
