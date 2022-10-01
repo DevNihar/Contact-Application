@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
@@ -63,6 +65,7 @@ public class Controller {
 
 
         contactsTable.setItems(ContactsData.getInstance().getContactsList());
+        contactsTable.getSelectionModel().selectFirst();
 
     }
 
@@ -85,5 +88,36 @@ public class Controller {
             NewContactDialog controller = loader.getController();
             controller.processData();
         }
+        Contact contact = contactsTable.getSelectionModel().getSelectedItem();
+        contactsTable.getSelectionModel().select(contact);
     }
+    @FXML
+    public void handleDeleteContact(){
+        Contact contact = contactsTable.getSelectionModel().getSelectedItem();
+        delete(contact);
+        contactsTable.getSelectionModel().selectFirst();
+    }
+
+    public void delete(Contact contact){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Contact");
+        alert.setHeaderText("Delete Contact " + contact.getFirstName());
+        alert.setContentText("Are you sure?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent() && result.get().equals(ButtonType.OK)){
+            ContactsData.getInstance().removeContact(contact);
+        }
+    }
+
+    public void handleKeyPressed(KeyEvent keyEvent){
+        Contact contact = contactsTable.getSelectionModel().getSelectedItem();
+        if(contact != null){
+            if(keyEvent.getCode().equals(KeyCode.DELETE)){
+                delete(contact);
+            }
+        }
+    }
+
 }
