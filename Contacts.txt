@@ -1,4 +1,5 @@
+Aman 	Fulzele	4621378546	friend
 Damayanti	Raut	7546982145	Mother
-Suresh	Raut	6854257954	Father
+Nihar	Raut	8390069093	Me
 Sourabh	Thatere	8435126984	Friend
-Test 1	Test	2154975213	Test
+Suresh	Raut	6854257954	Father

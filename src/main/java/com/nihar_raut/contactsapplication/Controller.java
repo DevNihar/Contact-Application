@@ -2,20 +2,16 @@ package com.nihar_raut.contactsapplication;
 
 import DataModel.Contact;
 import DataModel.ContactsData;
+import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class Controller {
@@ -90,6 +86,7 @@ public class Controller {
         }
         Contact contact = contactsTable.getSelectionModel().getSelectedItem();
         contactsTable.getSelectionModel().select(contact);
+        contactsTable.sort();
     }
     @FXML
     public void handleDeleteContact(){
@@ -118,6 +115,10 @@ public class Controller {
                 delete(contact);
             }
         }
+    }
+    @FXML
+    public void handleExit(){
+        Platform.exit();
     }
 
 }

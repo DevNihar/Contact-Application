@@ -16,7 +16,7 @@
                     <SeparatorMenuItem/>
                     <MenuItem text="Delete Contact" onAction="#handleDeleteContact"/>
                     <SeparatorMenuItem/>
-                    <MenuItem text="Exit"/>
+                    <MenuItem text="Exit" onAction="#handleExit"/>
                 </items>
             </Menu>
         </MenuBar>
@@ -24,12 +24,11 @@
     <center>
         <TableView fx:id="contactsTable" onKeyPressed="#handleKeyPressed">
             <columns>
-                <TableColumn fx:id="firstNameColumn" text="First Name" />
+                <TableColumn fx:id="firstNameColumn" text="First Name"/>
                 <TableColumn fx:id="secondNameColumn" text="Last Name"/>
                 <TableColumn fx:id="phoneNumberColumn" text="Phone Number"/>
                 <TableColumn fx:id="noteColumn" text="Note"/>
             </columns>
-
         </TableView>
     </center>
 
