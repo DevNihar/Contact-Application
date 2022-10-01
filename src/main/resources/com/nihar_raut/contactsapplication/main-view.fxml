@@ -16,6 +16,8 @@
                     <SeparatorMenuItem/>
                     <MenuItem text="Delete Contact" onAction="#handleDeleteContact"/>
                     <SeparatorMenuItem/>
+                    <MenuItem text="Edit Contact" onAction="#handleEditContact"/>
+                    <SeparatorMenuItem/>
                     <MenuItem text="Exit" onAction="#handleExit"/>
                 </items>
             </Menu>

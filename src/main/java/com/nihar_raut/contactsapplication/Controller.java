@@ -78,6 +78,7 @@ public class Controller {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
+
         Optional<ButtonType> result = dialog.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK){
@@ -85,6 +86,33 @@ public class Controller {
             controller.processData();
         }
         Contact contact = contactsTable.getSelectionModel().getSelectedItem();
+        contactsTable.getSelectionModel().select(contact);
+        contactsTable.sort();
+    }
+
+    @FXML
+    public void handleEditContact(){
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+        dialog.setTitle("Add Contact");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("new-contact-dialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(loader.load());
+        }catch (IOException e){
+            System.out.println("Couldn't load new Contact Dialog");
+        }
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Contact contact = contactsTable.getSelectionModel().getSelectedItem();
+        NewContactDialog controller = loader.getController();
+        controller.editContactFields(contact);
+
+        Optional<ButtonType> result =  dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            controller.editContact(contact);
+        }
+        contactsTable.refresh();
         contactsTable.getSelectionModel().select(contact);
         contactsTable.sort();
     }

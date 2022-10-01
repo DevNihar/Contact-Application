@@ -24,4 +24,18 @@ public class NewContactDialog {
         Contact contact = new Contact(firstName, lastName, phoneNumber, note);
         ContactsData.getInstance().addContact(contact);
     }
+
+    public void editContactFields(Contact contact){
+        firstNameField.setText(contact.getFirstName());
+        lastNameField.setText(contact.getLastName());
+        phoneNumberField.setText(contact.getPhoneNumber());
+        noteField.setText(contact.getNote());
+    }
+    public void editContact(Contact contact){
+        contact.setFirstName(firstNameField.getText());
+        contact.setLastName(lastNameField.getText());
+        contact.setPhoneNumber(phoneNumberField.getText());
+        contact.setNote(noteField.getText());
+
+    }
 }
